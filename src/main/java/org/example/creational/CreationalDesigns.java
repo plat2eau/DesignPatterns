@@ -7,6 +7,8 @@ import org.example.creational.factory.EnvironmentFactory;
 import org.example.creational.factory.Stages;
 import org.example.creational.factory.exceptions.NoSuchStageException;
 import org.example.creational.prototype.BookShop;
+import org.example.creational.singleton.Logger;
+import org.example.creational.singleton.LoggerEnum;
 
 public class CreationalDesigns {
 
@@ -43,5 +45,23 @@ public class CreationalDesigns {
 
         System.out.println(bookShop);
         System.out.println(newBookShop);
+    }
+
+    public void singleton() {
+        // Double-Checked Locking
+        Logger.getInstance();
+
+        // Using enum
+        // Even in double-checked locking, while deSerialisation (readObject())
+        LoggerEnum loggerEnum1 = LoggerEnum.INSTANCE;
+        loggerEnum1.i = 5;
+
+        loggerEnum1.show();
+
+
+        LoggerEnum loggerEnum2 = LoggerEnum.INSTANCE;
+        loggerEnum2.i = 6;
+
+        loggerEnum1.show();
     }
 }

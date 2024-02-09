@@ -13,6 +13,7 @@ public class Main {
 //        creationalDesigns.builder();
 //        creationalDesigns.factory();
 //        creationalDesigns.prototype();
+//        creationalDesigns.singleton();
 
 //        structuralDesigns.adapter();
 //        structuralDesigns.composite();
