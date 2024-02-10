@@ -9,10 +9,14 @@ import org.example.creational.factory.exceptions.NoSuchStageException;
 import org.example.creational.prototype.BookShop;
 import org.example.creational.singleton.Logger;
 import org.example.creational.singleton.LoggerEnum;
+import org.junit.jupiter.api.Test;
 
-public class CreationalDesigns {
+import static org.junit.jupiter.api.Assertions.*;
 
-    public void builder() {
+class CreationalDesignsTest {
+
+    @Test
+    void builder() {
         // Makes it easier to create object instead of remembering all params or passing null values
         Phone phone = new PhoneBuilder()
                 .setOs("Android")
@@ -22,7 +26,8 @@ public class CreationalDesigns {
         System.out.println(phone);
     }
 
-    public void factory() {
+    @Test
+    void factory() {
         // Makes it easier to get objects based on certain conditions
         try {
             Environment environment = new EnvironmentFactory().getEnvironment(Stages.ALPHA);
@@ -32,7 +37,8 @@ public class CreationalDesigns {
         }
     }
 
-    public void prototype() {
+    @Test
+    void prototype() {
         BookShop bookShop = new BookShop();
         bookShop.setName("Universal");
         bookShop.loadDataFromDatabase();
@@ -47,7 +53,8 @@ public class CreationalDesigns {
         System.out.println(newBookShop);
     }
 
-    public void singleton() {
+    @Test
+    void singleton() {
         // Double-Checked Locking
         Logger.getInstance();
 

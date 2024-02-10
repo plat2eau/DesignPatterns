@@ -12,38 +12,42 @@ import org.example.structural.facade.TestReportsHelperFacade;
 import org.example.structural.proxy.AccessDeniedException;
 import org.example.structural.proxy.DatabaseExecutorProxy;
 import org.example.structural.proxy.User;
+import org.junit.jupiter.api.Test;
 
-public class StructuralDesigns {
+import static org.junit.jupiter.api.Assertions.*;
 
+class StructuralDesignsTest {
+
+    @Test
     public void adapter() {
         // Adapts old design object to fit in new design objects
         // Old style object expected in Temperature interface type
         Temperature celsiusTemperature = new CelsiusTemperature(22);
         // Adapter converts to new Style object expected in NewTemperature interface type
         NewTemperature temperatureAdapter = new TemperatureAdapter((CelsiusTemperature) celsiusTemperature);
-        System.out.println(temperatureAdapter.getKelvinTemperature());
+        temperatureAdapter.getKelvinTemperature();
     }
 
+    @Test
     public void composite() {
         ComponentTest.test();
     }
 
-    public void proxy() {
+    @Test
+    public void proxy() throws Exception {
         DatabaseExecutorProxy adminExec = new DatabaseExecutorProxy(User.ADMIN);
         DatabaseExecutorProxy dataEntryExec = new DatabaseExecutorProxy(User.DATA_ENTRY);
-        try {
-            adminExec.executeQuery("custom delete query");
-            dataEntryExec.executeQuery("custom delete query");
-        } catch (AccessDeniedException e) {
-            throw new RuntimeException(e);
-        }
+        adminExec.executeQuery("custom delete query");
+        assertThrows(AccessDeniedException.class, () -> dataEntryExec.executeQuery("custom delete query"));
     }
 
+    @Test
     public void facade() {
         TestReportsHelperFacade testReportsHelper = new TestReportsHelperFacade();
         testReportsHelper.generateReports(Browser.CHROME, ReportType.JUNIT);
     }
 
+    @Test
     public void decorator() {
         Gun gun1 = new GunDecorator(new CompensatorDecorator(new GripDecorator(new BaseGun())));
         System.out.println("Gun 1:- Accuracy: " + gun1.getAccuracy());

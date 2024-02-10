@@ -2,8 +2,13 @@ package org.example.behavioural;
 
 import org.example.behavioural.observer.Channel;
 import org.example.behavioural.observer.Subscriber;
+import org.junit.jupiter.api.Test;
 
-public class BehaviouralDesigns {
+import static org.junit.jupiter.api.Assertions.*;
+
+class BehaviouralDesignsTest {
+
+    @Test
     public void observer() {
 
         Channel fireship = new Channel();
