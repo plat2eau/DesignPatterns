@@ -18,6 +18,7 @@ public class Main {
 //        structuralDesigns.adapter();
 //        structuralDesigns.composite();
 //        structuralDesigns.proxy();
+//        structuralDesigns.facade();
 
 //        behaviouralDesigns.observer();
     }

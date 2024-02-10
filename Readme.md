@@ -52,6 +52,10 @@ Structural design patterns help manage the composition of the objects
 ### Decorator
 
 ### Facade
+1. Used in places where we have two or more interfaces performing same functionality
+2. A single facade interface is introduced for simplicity
+3. All functional calls to those interfaces can be served by a single facade interface.
+2. The difference in state/context between those interfaces can be used to route function calls
 
 ### Flyweight
 

@@ -5,6 +5,9 @@ import org.example.structural.adapter.newSystem.NewTemperature;
 import org.example.structural.adapter.oldSystem.CelsiusTemperature;
 import org.example.structural.adapter.oldSystem.Temperature;
 import org.example.structural.composite.ComponentTest;
+import org.example.structural.facade.Browser;
+import org.example.structural.facade.ReportType;
+import org.example.structural.facade.TestReportsHelperFacade;
 import org.example.structural.proxy.AccessDeniedException;
 import org.example.structural.proxy.DatabaseExecutorProxy;
 import org.example.structural.proxy.User;
@@ -33,5 +36,10 @@ public class StructuralDesigns {
         } catch (AccessDeniedException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void facade() {
+        TestReportsHelperFacade testReportsHelper = new TestReportsHelperFacade();
+        testReportsHelper.generateReports(Browser.CHROME, ReportType.JUNIT);
     }
 }
