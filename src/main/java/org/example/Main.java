@@ -19,6 +19,7 @@ public class Main {
 //        structuralDesigns.composite();
 //        structuralDesigns.proxy();
 //        structuralDesigns.facade();
+//        structuralDesigns.decorator();
 
 //        behaviouralDesigns.observer();
     }

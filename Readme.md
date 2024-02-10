@@ -50,6 +50,8 @@ Structural design patterns help manage the composition of the objects
 2. Useful in places where we have a tree like structure or hierarchies
 
 ### Decorator
+1. Allows behavior to be added to individual object without affecting the behavior of objects from the same class
+2. Provides an alternative to subclassing for extending functionality
 
 ### Facade
 1. Used in places where we have two or more interfaces performing same functionality
