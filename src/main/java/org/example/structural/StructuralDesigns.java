@@ -5,6 +5,9 @@ import org.example.structural.adapter.newSystem.NewTemperature;
 import org.example.structural.adapter.oldSystem.CelsiusTemperature;
 import org.example.structural.adapter.oldSystem.Temperature;
 import org.example.structural.composite.ComponentTest;
+import org.example.structural.proxy.AccessDeniedException;
+import org.example.structural.proxy.DatabaseExecutorProxy;
+import org.example.structural.proxy.User;
 
 public class StructuralDesigns {
 
@@ -19,5 +22,16 @@ public class StructuralDesigns {
 
     public void composite() {
         ComponentTest.test();
+    }
+
+    public void proxy() {
+        DatabaseExecutorProxy adminExec = new DatabaseExecutorProxy(User.ADMIN);
+        DatabaseExecutorProxy dataEntryExec = new DatabaseExecutorProxy(User.DATA_ENTRY);
+        try {
+            adminExec.executeQuery("custom delete query");
+            dataEntryExec.executeQuery("custom delete query");
+        } catch (AccessDeniedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

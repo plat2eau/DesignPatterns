@@ -32,6 +32,9 @@ Structural design patterns help manage the creation of objects
 2. Helps in cases where we do some DB calls to create an object by avoiding DB calls on every duplication
 
 ### Singleton
+1. Only a single instance of a class is allowed
+2. Techniques like double checked locking are used to improve performance.
+3. Enum implementation is also for an easy implementation.
 
 ## Structural Design Patterns
 Structural design patterns help manage the composition of the objects
@@ -53,6 +56,8 @@ Structural design patterns help manage the composition of the objects
 ### Flyweight
 
 ### Proxy
+1. Used for controlling access to specific functionalities of a class.
+2. Where allowed operations are dependent upon the role of the user.
 
 ## Behavioural Design Patterns
 Structural design patterns help manage the interaction of the objects with each other
