@@ -6,6 +6,9 @@ import org.example.structural.adapter.oldSystem.CelsiusTemperature;
 import org.example.structural.adapter.oldSystem.Temperature;
 import org.example.structural.composite.ComponentTest;
 import org.example.structural.decorator.*;
+import org.example.structural.dynamicProxy.Human;
+import org.example.structural.dynamicProxy.LoggingHandler;
+import org.example.structural.dynamicProxy.Person;
 import org.example.structural.facade.Browser;
 import org.example.structural.facade.ReportType;
 import org.example.structural.facade.TestReportsHelperFacade;
@@ -13,6 +16,8 @@ import org.example.structural.proxy.AccessDeniedException;
 import org.example.structural.proxy.DatabaseExecutorProxy;
 import org.example.structural.proxy.User;
 import org.junit.jupiter.api.Test;
+
+import java.lang.reflect.Proxy;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -60,5 +65,24 @@ class StructuralDesignsTest {
         System.out.println("Gun 2:- Damage: " + gun2.getDamage());
         System.out.println("Gun 2:- Range: " + gun2.getRange());
 
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <T> T withLogging(T target, Class<T> inter) {
+        return (T) Proxy.newProxyInstance(
+                inter.getClassLoader(),
+                new Class<?>[] {inter},
+                new LoggingHandler(target)
+        );
+    }
+
+    @Test
+    public void dynamicProxy() {
+        Person person = new Person();
+        Human logged = withLogging(person, Human.class);
+        logged.talk();
+        logged.talk();
+        logged.walk();
+        System.out.println(logged);
     }
 }
